@@ -1,0 +1,79 @@
+activity_main.xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+
+    <EditText
+        android:id="@+id/uname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:hint="Enter username"
+        android:textColorHint="#757575" />
+
+    <EditText
+        android:id="@+id/pwd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:hint="Enter password"
+        android:inputType="textPassword"/>
+
+    <Button
+        android:id="@+id/login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="verify"
+        android:text="LOGIN" />
+
+</LinearLayout>
+
+
+MainActivity.java
+
+package com.example.android;
+
+import android.os.Bundle;
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.view.View;
+import android.widget.EditText;
+import android.widget.Toast;
+
+
+public class MainActivity extends AppCompatActivity {
+
+    EditText user,pass;
+    String u= "ammu";
+    String p= "111";
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        user=(EditText)findViewById(R.id.uname);
+        pass=(EditText)findViewById(R.id.pwd);
+
+    }
+
+    public void verify(View v) {
+        if (v.getId() == R.id.login) {
+            String a = user.getText().toString();
+            String b = pass.getText().toString();
+            if (a.equals(u) && b.equals(p)) {
+                Toast.makeText(this, "LOGIN SUCCESSFUL", Toast.LENGTH_LONG).show();
+            } else {
+                Toast.makeText(this, "INVALID LOGIN", Toast.LENGTH_LONG).show();
+            }
+        }
+    }
+}
+
